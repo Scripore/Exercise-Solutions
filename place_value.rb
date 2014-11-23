@@ -1,4 +1,4 @@
-# This program returns the second digit in a four digital number in three different ways.
+# This program returns the second digit in a four digit number in three different ways.
 
 
 puts "enter in a four digit number"
