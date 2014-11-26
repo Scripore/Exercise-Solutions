@@ -1,3 +1,11 @@
+
+=begin
+coderbyte challenge - Array Addition 1
+need to develop more.
+
+
+=end
+
 array = [1,2,3,4,5,43,65,324,56,34,23,56,34,6,7,1,1,10,43,454,676,343,657,343,65,63,44,54,65,7,5,643,3,5]
 print " ---"
 array2 = []
