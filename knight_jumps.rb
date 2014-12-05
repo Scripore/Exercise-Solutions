@@ -4,7 +4,6 @@ The structure of str will be the following: "(x y)" which represents the positio
 move to from a given location. For example: if str is "(4 5)" then your program should output 8 because the knight can move to 8 different spaces from position x=4 and y=5.
 =end
 
-
 def knight_jumps(str)
 str.split("")
 pos_x, pos_y = str[1].to_i, str[-2].to_i
@@ -21,7 +20,6 @@ end
 
 return tally
 end
-
 
 puts knight_jumps("(2 8)")
 
