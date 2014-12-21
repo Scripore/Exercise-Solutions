@@ -1,7 +1,5 @@
 #  By Ming Zhang
 #  Tic-Tac-Toe game submitted as part of the Flatiron School admissions process.
-#  Extensively commented the code.
-
 
 tic_tac_hash = {"1" => " ","2" => " ","3" => " ","4" => " ","5" => " ","6" => " ","7" => " ","8" => " ","9" => " "}  # created a hash to hold the "X" and "O" marks.
 tally = 0 # tracking the moves
@@ -19,6 +17,19 @@ def tic_tac_display(ttt_hash)  # creating a method to draw the board, interpolat
   puts "     |     |     "
   puts "  #{ttt_hash["7"]}  |  #{ttt_hash["8"]}  |  #{ttt_hash["9"]}  "
   puts "     |     |     "
+end
+
+def check_winner (tic_tac_hash, winning_combinations)
+  winning_combinations.each do |combo|  # iterates through the array. the if statement below checks to see if the elements in the subarrays all have the same value when embedded as a key in the tic_tac_hash.
+     if (tic_tac_hash[(combo[0])] == "X" || tic_tac_hash[(combo[0])] == "O") && (tic_tac_hash[(combo[0])] == tic_tac_hash[(combo[1])] && tic_tac_hash[(combo[0])] == tic_tac_hash[(combo[2])] )
+       case tic_tac_hash[(combo[0])]
+         when "X" then puts "YOU WIN!! GOOD JOB!!"
+       else
+         puts "YOU LOSE!! BOOOOOO!!!!"
+       end
+       abort
+     end
+  end
 end
 
 tic_tac_display(tic_tac_hash)   # drawing the board
@@ -41,28 +52,17 @@ while tally < 9 do   # while there is less than 9 moves, execute the following
     while tic_tac_hash[computer_selection] != " "  # if computer selection does not correspond to a value containing a blank character then the program makes a new selection
       computer_selection = rand(1..9).to_s
     end
+
     tic_tac_hash[computer_selection] = "O"  # assigning "O" to hash value that computer has selected
     tally += 1  # increment count by 1
-
     tic_tac_display(tic_tac_hash)  # draw updated board
     puts "tally is: #{tally}"  # display current count
 
+      check_winner(tic_tac_hash, winning_combinations)
 
-
-    winning_combinations.each do |combo|  # iterates through the array. the if statement below checks to see if the elements in the subarrays all have the same value when embedded as a key in the tic_tac_hash.
-      if (tic_tac_hash[(combo[0])] == "X" || tic_tac_hash[(combo[0])] == "O") && (tic_tac_hash[(combo[0])] == tic_tac_hash[(combo[1])] && tic_tac_hash[(combo[0])] == tic_tac_hash[(combo[2])] )
-        case tic_tac_hash[(combo[0])]
-          when "X" then puts "YOU WIN!! GOOD JOB!!"
-          else
-            puts "YOU LOSE!! BOOOOOO!!!!"
-        end
-        abort   # stops the program if there is a winner.
       end
     end
 
-  end
-
-end
 
 tic_tac_display(tic_tac_hash)
 
