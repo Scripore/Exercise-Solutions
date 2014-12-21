@@ -61,8 +61,8 @@ while tally < 9 do   # while there is less than 9 moves, execute the following
   end
 
   if tally == 9
-    puts "It's a tie."
     tic_tac_display(tic_tac_hash)
+    puts "It's a tie."
   end
 end
 
