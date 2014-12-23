@@ -1,23 +1,31 @@
 #  By Ming Zhang
 #  Tic-Tac-Toe console game program submitted as part of the Flatiron School admissions process.
 
-tic_tac_hash = {"1" => " ","2" => " ","3" => " ","4" => " ","5" => " ","6" => " ","7" => " ","8" => " ","9" => " "}  # created a hash to hold the "X" and "O" marks.
+tic_tac_hash = {}
+
+(1..9).each do |x|
+  x = x.to_s
+  tic_tac_hash[x] = " "
+end
+
 tally = 0 # tracking the number of moves
 winning_combinations = [['1','2','3'],['4','5','6'],['7','8','9'],['1','4','7'],['2','5','8'],['3','6','9'],['1','5','9'],['3','5','7']] # array of different winning combinations
 
 def tic_tac_display(ttt_hash)  # creating a method to draw the board, interpolating the hash values to string.
-  puts "     |     |     "
-  puts "  #{ttt_hash["1"]}  |  #{ttt_hash["2"]}  |  #{ttt_hash["3"]}  "
-  puts "     |     |     "
-  puts "-----------------"
-  puts "     |     |     "
-  puts "  #{ttt_hash["4"]}  |  #{ttt_hash["5"]}  |  #{ttt_hash["6"]}  "
-  puts "     |     |     "
-  puts "-----------------"
-  puts "     |     |     "
-  puts "  #{ttt_hash["7"]}  |  #{ttt_hash["8"]}  |  #{ttt_hash["9"]}  "
-  puts "     |     |     "
-end
+puts <<-EOF
+       |     |
+    #{ttt_hash["1"]}  |  #{ttt_hash["2"]}  |  #{ttt_hash["3"]}
+       |     |
+  -----------------
+       |     |
+    #{ttt_hash["4"]}  |  #{ttt_hash["5"]}  |  #{ttt_hash["6"]}
+       |     |
+  -----------------
+       |     |
+    #{ttt_hash["7"]}  |  #{ttt_hash["8"]}  |  #{ttt_hash["9"]}
+       |     |
+EOF
+  end
 
 def check_winner (tic_tac_hash, winning_combinations)
   winning_combinations.each do |combo|  # iterates through the array. the if statement below checks to see if the elements in the subarrays all have the same value when embedded as a key in the tic_tac_hash.
