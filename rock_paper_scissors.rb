@@ -1,3 +1,15 @@
+def text_type (delay_in_seconds)
+  yield.split("").each do |char|
+    print char
+    sleep delay_in_seconds
+  end
+end
+
+text_type(0.03) do
+  "\n\nThis rock-paper-scissors program was created by Ming Zhang.\nSubmitted as an assignment to Tealeaf Academy. \n\n\n"
+end
+
+
 loop do
 
   puts "Choice one: (P/R/S)"
