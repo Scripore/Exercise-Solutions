@@ -11,7 +11,7 @@ def bid_into_pot
   end
 
   puts "You bankroll is #{@bankroll}"
-  puts "How much would you like to bet? \nAmount:"
+  print "How much would you like to bet? \nAmount:"
   @bet_amount = gets.to_i
   while @bet_amount < 1 || @bet_amount > @bankroll
     puts "Please bet an amount within your bankroll.\nEnter:"
@@ -37,13 +37,13 @@ loop do
   @hash = {}
   suits.each do |suits|
     (2..10).each do |x|
-    deck << x.to_s + suits
-    @hash[x.to_s + suits] = x
+      deck << x.to_s + suits
+      @hash[x.to_s + suits] = x
     end
 
     face_cards.each do |rank_cards|
-    deck << rank_cards + suits
-    @hash[rank_cards + suits] = 10
+      deck << rank_cards + suits
+      @hash[rank_cards + suits] = 10
     end
   end
 
@@ -94,8 +94,8 @@ loop do
           puts "player total is #{@player_total}"
 
         else
-        user_status = "busted"
-        puts "BUSTED!"
+          user_status = "busted"
+          puts "BUSTED!"
         end
       end
     end
@@ -131,16 +131,37 @@ loop do
       end
 
     end
+
+    puts "Dealer total is #{@dealer_total}"
   end
+
+puts "\n\n "
+50.times {print "*"}
+
+puts <<-EOF
+
+  Player's Cards: #{@players_cards}
+  Total Value: #{@player_total}
+
+  Dealer's Cards: #{@dealers_cards}
+  Total Value: #{@dealer_total}
+EOF
+
+  50.times {print "*"}
+  puts " "
 
   if user_status == 'busted'
     @bankroll -= @bet_amount
+    puts "You've busted!"
   elsif dealer_status == 'busted'
     @bankroll += @bet_amount
+    puts "Dealer has busted!"
   elsif @player_total > @dealer_total
     @bankroll += @bet_amount
+    puts "You win!"
   elsif @dealer_total > @player_total
     @bankroll -= @bet_amount
+    puts "You lose!"
   else
     puts "Tie Game"
   end
